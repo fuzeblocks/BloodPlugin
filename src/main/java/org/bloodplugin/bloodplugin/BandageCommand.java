@@ -62,8 +62,6 @@ public class BandageCommand implements CommandExecutor, Listener {
                 // Annuler l'événement pour empêcher l'utilisation du bandage
                 event.setCancelled(true);
 
-                // Appliquer l'effet de guérison ou autre code que vous souhaitez exécuter lorsque le bandage est utilisé
-                // ...
             }
         }
     }
