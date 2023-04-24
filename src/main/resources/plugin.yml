@@ -1,0 +1,4 @@
+name: bloodplugin
+version: '${version}'
+main: org.bloodplugin.bloodplugin.Bloodplugin
+api-version: 1.16
