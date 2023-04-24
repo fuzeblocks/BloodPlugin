@@ -1,0 +1,33 @@
+messages:
+  #You can change this
+  bloodmessage: "&cYou are bleeding"
+  reload: "&cBlood reload"
+  title: "&cBlood reload"
+  subtitle: "&cYes"
+  notplayer: "&cYou can't reload the plugin because you are not a player"
+  bandageuse: "&cVous vous ete soigner"
+  errorbandagegive: "&cYou don't have a permission"
+options:
+  #You can change this
+  particules: 9999
+  potion-type: POISON
+  potion-duration: 110
+  potion-amplifier: 0
+  reloadparticules: 9999
+  titlefadein: 50
+  titlestay: 50
+  titlefadeout: 30
+  reloadparticuletype: "EXPLOSION_HUGE"
+  reloadsoundvolume: 10
+  reloadpitchvolume: 1
+  reloadsoundtype: "BLOCK_NOTE_BLOCK_PLING"
+items:
+  #You can change this
+  bandagename: "Bandage"
+  bandagelore1: "Cool"
+  bandagelore2: "&cEasy"
+  healeffect: "HEAL"
+  healduration: 110
+  heallvl: 1
+
+

@@ -1,4 +1,22 @@
-name: bloodplugin
-version: '${version}'
-main: org.bloodplugin.bloodplugin.Bloodplugin
+website: tuturcraft.craftcloud.fr
+name: BloodPlugin
+version: '3.1'
+main: org.bloodplugin.bloodplugin.main
 api-version: 1.16
+author: fuzeblocks
+prefix: §c[BloodPlugin v2.4 by fuzeblocks]
+description: "When you take fall damage this plugin add an effect to the player"
+load: STARTUP
+commands:
+  reload:
+    description: Sert a reload BloodPlugin
+    permission: bloodreload.use
+  bandage:
+    description: Donne un bandage
+    permission: bloodbandage.use
+
+
+
+
+
+
