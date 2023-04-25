@@ -1,7 +1,5 @@
 package org.bloodplugin.bloodplugin;
 
-import com.sk89q.worldedit.bukkit.BukkitAdapter;
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -12,9 +10,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Objects;
-import com.sk89q.worldguard.WorldGuard;
 
-import static sun.audio.AudioPlayer.player;
+
 
 public class ReloadCommand implements CommandExecutor {
     private final JavaPlugin plugin;

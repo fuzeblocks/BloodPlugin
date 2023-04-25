@@ -18,15 +18,11 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.Objects;
 
 public class BloodListener implements Listener {
-    private boolean shouldListen = true;
+    private final boolean shouldListen = true;
     private final JavaPlugin plugin;
 
     public BloodListener(JavaPlugin plugin) {
         this.plugin = plugin;
-    }
-
-    public void setShouldListen(boolean shouldListen) {
-        this.shouldListen = shouldListen;
     }
 
     @EventHandler
@@ -43,7 +39,7 @@ public class BloodListener implements Listener {
             int amplifier = config.getInt("options.potion-amplifier");
 
             // Créer l'effet de potion
-            PotionEffectType effectType = PotionEffectType.getByName(potionType);
+            PotionEffectType effectType = PotionEffectType.getByName(Objects.requireNonNull(potionType));
             if (effectType == null) {
                 return;
             }
@@ -75,18 +71,16 @@ public class BloodListener implements Listener {
         if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
             ItemMeta meta = item.getItemMeta();
 
-            if (meta.hasDisplayName() && ChatColor.stripColor(meta.getDisplayName()).equals(plugin.getConfig().getString("items.bandagename"))) {
+            if (Objects.requireNonNull(meta).hasDisplayName() && ChatColor.stripColor(meta.getDisplayName()).equals(plugin.getConfig().getString("items.bandagename"))) {
                 // Annuler l'événement
                 event.setCancelled(true);
 
                 // Soigner le joueur
-                player.addPotionEffect(new PotionEffect(PotionEffectType.getByName(plugin.getConfig().getString("items.healeffect")),plugin.getConfig().getInt("items.healduration"),plugin.getConfig().getInt("items.heallvl")));
+                player.addPotionEffect(new PotionEffect(Objects.requireNonNull(Objects.requireNonNull(PotionEffectType.getByName(Objects.requireNonNull(plugin.getConfig().getString("items.healeffect"))))),plugin.getConfig().getInt("items.healduration"),plugin.getConfig().getInt("items.heallvl")));
 
                 // Envoyer un message au joueur
                 String bandageMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("messages.bandageuse")));
-                if (bandageMessage != null) {
-                    player.sendMessage(bandageMessage);
-                }
+                player.sendMessage(bandageMessage);
 
                 // Retirer un bandage de l'inventaire du joueur
                 int amount = item.getAmount();
