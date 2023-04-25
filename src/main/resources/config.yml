@@ -30,4 +30,8 @@ items:
   healduration: 110
   heallvl: 1
 
+  #Permission:
+  #Bandage = permission: bloodbandage.use
+  #Reload = permission: bloodreload.use
+
 

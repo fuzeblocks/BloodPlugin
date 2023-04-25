@@ -1,6 +1,6 @@
 website: tuturcraft.craftcloud.fr
 name: BloodPlugin
-version: '3.1'
+version: '4.0'
 main: org.bloodplugin.bloodplugin.main
 api-version: 1.16
 author: fuzeblocks
