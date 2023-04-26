@@ -5,12 +5,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 
 
-public class main extends JavaPlugin {
+public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
-         System.out.println("Blood is now enable");
+         System.out.println("Blood is now enable !");
          getServer().getPluginManager().registerEvents(new BloodListener(this), this);
          getCommand("reload").setExecutor(new ReloadCommand(this));
          getCommand("bandage").setExecutor(new BandageCommand(this));
@@ -22,6 +22,7 @@ public class main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        System.out.println("Blood is now disable !");
 
     }
 }
