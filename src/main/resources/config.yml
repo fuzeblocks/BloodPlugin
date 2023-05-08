@@ -21,6 +21,7 @@ options:
   reloadsoundvolume: 10
   reloadpitchvolume: 1
   reloadsoundtype: "BLOCK_NOTE_BLOCK_PLING"
+  undoessneakdamage: true
 items:
   #You can change this
   bandagename: "Bandage"
@@ -30,8 +31,15 @@ items:
   healduration: 110
   heallvl: 1
 
+
+  #Do not change this
+version: true
+  #Do not change this
+
+
   #Permission:
   #Bandage = permission: bloodbandage.use
   #Reload = permission: bloodreload.use
+  #Secret !!! admin permission = invinsible.secret.bloodplugin
 
 

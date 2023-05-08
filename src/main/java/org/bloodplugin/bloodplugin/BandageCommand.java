@@ -31,9 +31,8 @@ public class BandageCommand implements CommandExecutor, Listener {
         if (sender instanceof Player) { // Vérifier si l'émetteur est un joueur
             Player player = (Player) sender;
             if (!player.hasPermission("bloodbandage.use")) {
-                return true;
-            } else {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(config.getString("messages.errorbandagegive"))));
+                return true;
             }
 
             // Créer un bandage et le mettre dans la main du joueur

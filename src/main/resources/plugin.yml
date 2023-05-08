@@ -1,10 +1,10 @@
 website: tuturcraft.craftcloud.fr
 name: BloodPlugin
-version: '4.0'
+version: '4.5'
 main: org.bloodplugin.bloodplugin.Main
 api-version: 1.16
 author: fuzeblocks
-prefix: §c[BloodPlugin v2.4 by fuzeblocks]
+prefix: (BloodPlugin v2.4 by fuzeblocks)
 description: "When you take fall damage this plugin add an effect to the player"
 load: STARTUP
 commands:

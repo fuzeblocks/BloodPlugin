@@ -27,17 +27,29 @@ public class BloodListener implements Listener {
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
+        boolean sneak = plugin.getConfig().getBoolean("options.undoessneakdamage");
         if (!shouldListen || !(event.getEntity() instanceof Player)) {
             return;
         }
         Player player = (Player) event.getEntity();
+        String nom = player.getDisplayName();
         if (event.getCause() == EntityDamageEvent.DamageCause.FALL) {
             // Récupérer les valeurs de configuration
             FileConfiguration config = plugin.getConfig();
             String potionType = config.getString("options.potion-type");
             int duration = config.getInt("options.potion-duration");
             int amplifier = config.getInt("options.potion-amplifier");
-
+            if (player.isSneaking() && sneak == true ) {
+                event.setCancelled(true);
+                float distance = player.getFallDistance();
+                double degats = distance/1.5;
+                player.damage(degats);
+                System.out.println("BloodPlugin : " + nom + " is sneaking !");
+                if (player.isSneaking() && player.hasPermission("invinsible.secret.bloodplugin"))
+                    player.setHealth(20);
+                event.setCancelled(true);
+                return;
+            }
             // Créer l'effet de potion
             PotionEffectType effectType = PotionEffectType.getByName(Objects.requireNonNull(potionType));
             if (effectType == null) {
