@@ -7,6 +7,7 @@ messages:
   notplayer: "&cYou can't reload the plugin because you are not a player"
   bandageuse: "&cVous vous ete soigner"
   errorbandagegive: "&cYou don't have a permission"
+  info: "&cNo perm !"
 options:
   #You can change this
   particules: 9999
@@ -30,11 +31,12 @@ items:
   healeffect: "HEAL"
   healduration: 110
   heallvl: 1
+update:
+  enabled: true
+  updatemessage: true
+  noupdate: "There is no update available."
+  update: "There is a new update available."
 
-
-  #Do not change this
-version: true
-  #Do not change this
 
 
   #Permission:

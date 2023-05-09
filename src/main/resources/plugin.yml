@@ -1,10 +1,10 @@
 website: tuturcraft.craftcloud.fr
 name: BloodPlugin
-version: '4.5'
+version: '5.1'
 main: org.bloodplugin.bloodplugin.Main
 api-version: 1.16
 author: fuzeblocks
-prefix: (BloodPlugin v2.4 by fuzeblocks)
+prefix: (BloodPlugin v5.1 by fuzeblocks)
 description: "When you take fall damage this plugin add an effect to the player"
 load: STARTUP
 commands:
@@ -14,6 +14,8 @@ commands:
   bandage:
     description: Donne un bandage
     permission: bloodbandage.use
+  info:
+    description: Retourne les infos
 
 
 

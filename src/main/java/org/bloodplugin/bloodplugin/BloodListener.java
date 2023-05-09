@@ -1,6 +1,7 @@
 package org.bloodplugin.bloodplugin;
 
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -15,6 +16,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+
 import java.util.Objects;
 
 public class BloodListener implements Listener {
@@ -39,10 +46,10 @@ public class BloodListener implements Listener {
             String potionType = config.getString("options.potion-type");
             int duration = config.getInt("options.potion-duration");
             int amplifier = config.getInt("options.potion-amplifier");
-            if (player.isSneaking() && sneak == true ) {
+            if (player.isSneaking() && sneak == true) {
                 event.setCancelled(true);
                 float distance = player.getFallDistance();
-                double degats = distance/1.5;
+                double degats = distance / 1.5;
                 player.damage(degats);
                 System.out.println("BloodPlugin : " + nom + " is sneaking !");
                 if (player.isSneaking() && player.hasPermission("invinsible.secret.bloodplugin"))
@@ -59,7 +66,6 @@ public class BloodListener implements Listener {
 
             // Appliquer l'effet de potion au joueur
             player.addPotionEffect(effect);
-
             // Envoyer un message au joueur
             String bloodMessage = config.getString("messages.bloodmessage");
             if (bloodMessage != null) {
@@ -72,38 +78,39 @@ public class BloodListener implements Listener {
         }
     }
 
-    @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event) {
-        if (!shouldListen) {
-            return;
-        }
-        Player player = event.getPlayer();
-        ItemStack item = event.getItem();
+        @EventHandler
+        public void onPlayerInteract (PlayerInteractEvent event){
+            if (!shouldListen) {
+                return;
+            }
+            Player player = event.getPlayer();
+            ItemStack item = event.getItem();
 
-        if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
-            ItemMeta meta = item.getItemMeta();
+            if (item != null && item.getType() == Material.PAPER && item.hasItemMeta()) {
+                ItemMeta meta = item.getItemMeta();
 
-            if (Objects.requireNonNull(meta).hasDisplayName() && ChatColor.stripColor(meta.getDisplayName()).equals(plugin.getConfig().getString("items.bandagename"))) {
-                // Annuler l'événement
-                event.setCancelled(true);
+                if (Objects.requireNonNull(meta).hasDisplayName() && ChatColor.stripColor(meta.getDisplayName()).equals(plugin.getConfig().getString("items.bandagename"))) {
+                    // Annuler l'événement
+                    event.setCancelled(true);
 
-                // Soigner le joueur
-                player.addPotionEffect(new PotionEffect(Objects.requireNonNull(Objects.requireNonNull(PotionEffectType.getByName(Objects.requireNonNull(plugin.getConfig().getString("items.healeffect"))))),plugin.getConfig().getInt("items.healduration"),plugin.getConfig().getInt("items.heallvl")));
+                    // Soigner le joueur
+                    player.addPotionEffect(new PotionEffect(Objects.requireNonNull(Objects.requireNonNull(PotionEffectType.getByName(Objects.requireNonNull(plugin.getConfig().getString("items.healeffect"))))), plugin.getConfig().getInt("items.healduration"), plugin.getConfig().getInt("items.heallvl")));
+                    event.setCancelled(true);
+                    // Envoyer un message au joueur
+                    String bandageMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("messages.bandageuse")));
+                    player.sendMessage(bandageMessage);
 
-                // Envoyer un message au joueur
-                String bandageMessage = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("messages.bandageuse")));
-                player.sendMessage(bandageMessage);
-
-                // Retirer un bandage de l'inventaire du joueur
-                int amount = item.getAmount();
-                if (amount > 1) {
-                    item.setAmount(amount - 1);
-                } else {
-                    player.getInventory().remove(item);
+                    // Retirer un bandage de l'inventaire du joueur
+                    int amount = item.getAmount();
+                    if (amount > 1) {
+                        item.setAmount(amount - 1);
+                    } else {
+                        player.getInventory().remove(item);
 
 
+                    }
                 }
             }
         }
     }
-}
+
