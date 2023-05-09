@@ -32,6 +32,7 @@ items:
   healduration: 110
   heallvl: 1
 update:
+  #If plugin can't verify the version the server crash !!!!
   enabled: true
   updatemessage: true
   noupdate: "There is no update available."
