@@ -43,5 +43,6 @@ update:
   #Bandage = permission: bloodbandage.use
   #Reload = permission: bloodreload.use
   #Secret !!! admin permission = invinsible.secret.bloodplugin
+  #Info = bloodinfo.use
 
 
